@@ -1,0 +1,19 @@
+{
+  "kycDocuments": [
+    {
+      "fieldName": "cac",
+      "documentType": "PDF",
+      "rawFile": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABIAAAAMCAYAAABvEu28AAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAADVSURBVHgBrZGxDcIwEEXvzFEBUjaAEbIBMECEMgItikQ2IGwAEkhsQQH0MEEYIRvgIgUSJuaMkshCqUxe4fP/lq3zP/Tio6cU+fAHSqmM3i9KEdEDrSW4wHe7HZLEm5EGvc73QQIO9KNTwo2scBCdNbSAgJZo7SEyC2e05eQ34AARxQi4pFLL5yHMeouLj6LwjJHvgqutK4xvaw5b1h1VCKFTnmcl8UfXPjR1Zgv+4vRbCyFtXZ+XfhNm/A+ud750Awc4nzGXCXdUzEGLGRtDcCMDLMIPys5HiTRtS1YAAAAASUVORK5CYII="
+    },
+    {
+      "fieldName": "mlm",
+      "documentType": "IMAGE",
+      "rawFile": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABIAAAAMCAYAAABvEu28AAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAADVSURBVHgBrZGxDcIwEEXvzFEBUjaAEbIBMECEMgItikQ2IGwAEkhsQQH0MEEYIRvgIgUSJuaMkshCqUxe4fP/lq3zP/Tio6cU+fAHSqmM3i9KEdEDrSW4wHe7HZLEm5EGvc73QQIO9KNTwo2scBCdNbSAgJZo7SEyC2e05eQ34AARxQi4pFLL5yHMeouLj6LwjJHvgqutK4xvaw5b1h1VCKFTnmcl8UfXPjR1Zgv+4vRbCyFtXZ+XfhNm/A+ud750Awc4nzGXCXdUzEGLGRtDcCMDLMIPys5HiTRtS1YAAAAASUVORK5CYII="
+    },
+    {
+      "fieldName": "rc_number",
+      "documentType": "TEXT",
+      "kycRecordUpdate": "RC12308511"
+    }
+  ]
+}

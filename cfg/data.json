@@ -1,0 +1,101 @@
+{
+  "defaultPaymentOptions": [
+    {
+      "name": "Card",
+      "viewName": "Card",
+      "code": "CARD",
+      "number": "000021",
+      "type": "COUNTRY",
+      "description": "card payment",
+      "allow_option": true,
+      "status": "ACTIVE",
+      "paymentOptionFeeMode": "PERCENTAGE",
+      "applyFixCharge": false,
+      "paymentOptionFee": "2.00",
+      "internationalPaymentOptionFee": 0.0,
+      "internationalPaymentOptionMode": "PERCENTAGE",
+      "paymentOptionCapStatus": {
+        "cappedSettlement": "CAPPED",
+        "cappedAmount": 300
+      },
+      "internationalPaymentOptionCapStatus": {
+        "inCappedSettlement": "UNCAPPED"
+      }
+    },
+    {
+      "name": "Account",
+      "viewName": "Account",
+      "code": "ACCOUNT",
+      "number": "000021",
+      "type": "COUNTRY",
+      "description": "account payment",
+      "allow_option": true,
+      "status": "ACTIVE",
+      "paymentOptionFeeMode": "FIXED",
+      "applyFixCharge": false,
+      "paymentOptionFee": "3.00",
+      "internationalPaymentOptionFee": 0.0,
+      "internationalPaymentOptionMode": "PERCENTAGE",
+      "paymentOptionCapStatus": {
+        "cappedSettlement": "CAPPED",
+        "cappedAmount": 100
+      },
+      "internationalPaymentOptionCapStatus": {
+        "inCappedSettlement": "UNCAPPED"
+      }
+    },
+    {
+      "name": "Transfer",
+      "viewName": "TRANSFER",
+      "code": "TRANSFER",
+      "number": "000021",
+      "type": "COUNTRY",
+      "description": "transfer payment",
+      "allow_option": true,
+      "status": "ACTIVE",
+      "paymentOptionFeeMode": "PERCENTAGE",
+      "applyFixCharge": false,
+      "paymentOptionFee": "1.50",
+      "internationalPaymentOptionFee": 0.0,
+      "internationalPaymentOptionMode": "PERCENTAGE",
+      "paymentOptionCapStatus": {
+        "cappedSettlement": "UNCAPPED"
+      },
+      "internationalPaymentOptionCapStatus": {
+        "inCappedSettlement": "UNCAPPED"
+      }
+    },
+    {
+      "name": "MOMO",
+      "viewName": "WALLET",
+      "code": "WALLET",
+      "number": "000021",
+      "type": "COUNTRY",
+      "description": "wallet payment",
+      "allow_option": true,
+      "status": "ACTIVE",
+      "paymentOptionFeeMode": "FIXED",
+      "applyFixCharge": false,
+      "paymentOptionFee": "2.50",
+      "internationalPaymentOptionFee": 0.0,
+      "internationalPaymentOptionMode": "PERCENTAGE",
+      "paymentOptionCapStatus": {
+        "cappedSettlement": "UNCAPPED"
+      },
+      "internationalPaymentOptionCapStatus": {
+        "inCappedSettlement": "UNCAPPED"
+      }
+    }
+  ],
+  "setting": {
+    "card_option": true,
+    "bank_option": true,
+    "transfer_option": true,
+    "display_fee": true,
+    "email_receipt_customer": true,
+    "email_receipt_merchant": true,
+    "mode": "LIVE",
+    "charge_option": "MARCHANT",
+    "applySettlementPattern": false
+  }
+}
