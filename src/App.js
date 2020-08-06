@@ -93,17 +93,19 @@ export default () => {
                 type="text"
                 className="py-4"
                 placeholder={payloadData.description}
+                style={{ fontSize: 20 }}
                 required
               />
             ) : payloadData.documentType === "IMAGE" ? (
               <Form.File
                 name={payloadData.fieldName}
                 id="custom-file-translate-scss"
-                label={!file.mlm ? "Select A File" : file.mlm}
+                label={!file.mlm ? "Select An Image" : file.mlm}
                 lang="en"
                 accept="image/*"
                 onChange={e => handleValue(e)}
                 data-browse="Upload"
+                style={{ fontSize: 20 }}
                 custom
                 required
               />
@@ -111,11 +113,12 @@ export default () => {
               <Form.File
                 name={payloadData.fieldName}
                 id="custom-file-translate-scss"
-                label={!file.cac ? "Select A File" : file.cac}
+                label={!file.cac ? "Select A PDF File" : file.cac}
                 lang="en"
                 accept="application/pdf"
                 onChange={e => handleValue(e)}
                 data-browse="Upload"
+                style={{ fontSize: 20 }}
                 custom
                 required
               />
