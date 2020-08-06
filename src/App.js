@@ -10,13 +10,13 @@ export default () => {
   const [file, setFileName] = useState({});
 
   const handleSubmit = event => {
-    const { rc_number, mlm, cac } = data;
     event.preventDefault();
     const form = event.currentTarget;
     if (form.checkValidity() === false) {
       event.stopPropagation();
       setValidated(true);
-    } else {
+    } else if (data !== null) {
+      const { rc_number, mlm, cac } = data;
       setValidated(false);
       const postData = { kycDocuments: [rc_number, mlm, cac] };
       console.log(JSON.stringify(postData));
