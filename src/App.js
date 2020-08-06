@@ -1,23 +1,16 @@
 import React, { useState } from "react";
 import { Form, Button } from "react-bootstrap";
+import { isEmpty } from "lodash";
 import "./styles/App.css";
 const payload = require("./data.json");
 
 export default () => {
   const [validated, setValidated] = useState(false);
-  const [data, setData] = useState({
-    rc_number: null,
-    mlm: null,
-    cac: null
-  });
+  const [data, setData] = useState(null);
+  const [file, setFileName] = useState({});
 
-  const [file, setFileName] = useState({
-    mlm: null,
-    cac: null
-  });
-
-  const { rc_number, mlm, cac } = data;
   const handleSubmit = event => {
+    const { rc_number, mlm, cac } = data;
     event.preventDefault();
     const form = event.currentTarget;
     if (form.checkValidity() === false) {
@@ -39,8 +32,8 @@ export default () => {
     });
   };
 
-  const handleValue = async e => {
-    if (e.target.name === "rc_number") {
+  const handleValue = e => {
+    if (e.target.type === "text") {
       setData({
         ...data,
         [e.target.name]: {
@@ -49,35 +42,38 @@ export default () => {
           kycRecordUpdate: e.target.value
         }
       });
-    } else if (e.target.files[0]) {
-      const fileDetail = e.target.files[0];
-      const { name } = fileDetail;
-      if (e.target.name === "mlm") {
-        fileToBase64(fileDetail).then(result =>
-          setData({ ...data, mlm: result })
-        );
-        setFileName({ ...file, mlm: name });
-        setData({
-          ...data,
-          [e.target.name]: {
-            fieldName: e.target.name,
-            documentType: "IMAGE"
-          }
-        });
-      } else {
-        fileToBase64(fileDetail).then(result =>
-          setData({ ...data, cac: result })
-        );
-        setFileName({ ...file, cac: name });
-        setData({
-          ...data,
-          [e.target.name]: {
-            fieldName: e.target.name,
-            documentType: "PDF"
-          }
-        });
-      }
     }
+  };
+
+  const handleFile = e => {
+    e.persist();
+    const fileDetail = e.target.files[0];
+    fileToBase64(fileDetail).then(result => {
+      if (fileDetail) {
+        const { name } = fileDetail;
+        if (e.target.accept === "image/*") {
+          setFileName({ ...file, [e.target.name]: name });
+          setData({
+            ...data,
+            [e.target.name]: {
+              fieldName: e.target.name,
+              documentType: "IMAGE",
+              rawFile: result
+            }
+          });
+        } else {
+          setFileName({ ...file, cac: name });
+          setData({
+            ...data,
+            [e.target.name]: {
+              fieldName: e.target.name,
+              documentType: "PDF",
+              rawFile: result
+            }
+          });
+        }
+      }
+    });
   };
 
   return (
@@ -96,33 +92,32 @@ export default () => {
                 style={{ fontSize: 20 }}
                 required
               />
-            ) : payloadData.documentType === "IMAGE" ? (
+            ) : payloadData.documentType !== "TEXT" ? (
               <Form.File
                 name={payloadData.fieldName}
                 id="custom-file-translate-scss"
-                label={!file.mlm ? "Select An Image" : file.mlm}
+                label={
+                  payloadData.documentType === "IMAGE"
+                    ? isEmpty(file) || file.mlm === undefined
+                      ? "Select An Image"
+                      : file.mlm
+                    : isEmpty(file) || file.cac === undefined
+                    ? "Select A PDF"
+                    : file.cac
+                }
                 lang="en"
-                accept="image/*"
-                onChange={e => handleValue(e)}
+                accept={
+                  payloadData.documentType === "IMAGE"
+                    ? "image/*"
+                    : "application/pdf"
+                }
+                onChange={e => handleFile(e)}
                 data-browse="Upload"
                 style={{ fontSize: 20 }}
                 custom
                 required
               />
-            ) : (
-              <Form.File
-                name={payloadData.fieldName}
-                id="custom-file-translate-scss"
-                label={!file.cac ? "Select A PDF File" : file.cac}
-                lang="en"
-                accept="application/pdf"
-                onChange={e => handleValue(e)}
-                data-browse="Upload"
-                style={{ fontSize: 20 }}
-                custom
-                required
-              />
-            )}
+            ) : null}
           </Form.Group>
         ))}
         <Button
